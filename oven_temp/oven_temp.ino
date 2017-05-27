@@ -15,18 +15,22 @@ Adafruit_7segment matrix = Adafruit_7segment();
 Adafruit_MAX31855 thermocouple(MAXCLK, MAXCS, MAXDO);
 
 void setup() {
-//  Serial.begin(9600);
-  
   // Init 7-segment display with dim brightness
   matrix.begin(0x70);
   matrix.setBrightness(1); // 0 min - 15 max
 }
 
 void loop() {
-  double temp = thermocouple.readCelsius(); // thermocouple temperature
+  // Read thermocouple temperature
+  // double temp = thermocouple.readCelsius(); 
+  double temp = thermocouple.readFarenheit();
+
+  // Display temperature rounded to whole values on 7-segment display
   matrix.print(round(temp)); // don't care about tenths
   matrix.writeDisplay();
 
-//  Serial.println(thermocouple.readInternal()); // Electronics temperature
+  // MAX31855 also provides an internal temperature of the chip
+  // if we wanted to show temperature outside the oven for example.
+  // Serial.println(thermocouple.readInternal());
   delay(1000);
 }

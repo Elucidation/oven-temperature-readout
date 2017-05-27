@@ -3,6 +3,8 @@ Oven temperature live readout using a thermocouple, a 7-segment display and an A
 
 ![oven temperature readout in use](oven_temp.png)
 
+Temperature is in Farenheit (or Celsius).
+
 # Parts
 
 * [Thermocouple Type-K Glass Braid Insulated - K](https://www.adafruit.com/product/270)
