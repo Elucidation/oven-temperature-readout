@@ -25,9 +25,15 @@ void loop() {
   // double temp = thermocouple.readCelsius(); 
   double temp = thermocouple.readFarenheit();
 
-  // Display temperature rounded to whole values on 7-segment display
-  matrix.print(round(temp)); // don't care about tenths
-  matrix.writeDisplay();
+  if (temp < 104) {
+    // If under 104 farenheit / 40 celsius, display nothing
+    matrix.clear();
+    matrix.writeDisplay();
+  } else {
+    // Display temperature rounded to whole values on 7-segment display
+    matrix.print(round(temp)); // don't care about tenths
+    matrix.writeDisplay();
+  }
 
   // MAX31855 also provides an internal temperature of the chip
   // if we wanted to show temperature outside the oven for example.
